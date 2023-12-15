@@ -1,0 +1,32 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    volumes:
+      - .:/app
+
+    ports:
+      - 8000:8000
+
+    depends_on:
+      - db
+
+  db:
+
+    image: postgres:15-alpine
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+    ports:
+      - 5432:5432
+
+    environment:
+      POSTGRES_DB: "autodb"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+
+volumes:
+  postgres_data:

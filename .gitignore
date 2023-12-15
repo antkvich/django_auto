@@ -1,0 +1,5 @@
+.idea/
+
+/.env
+
+/autoRoom/__pycache__/
