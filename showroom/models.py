@@ -1,7 +1,7 @@
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.db.models.functions import Now
 from django_countries.fields import CountryField
-from django.contrib.postgres.fields import ArrayField
 
 
 class BaseModel(models.Model):
@@ -40,4 +40,3 @@ class Discount(BaseModel):
     description = models.TextField()
     showroom = models.ForeignKey(Showroom, on_delete=models.CASCADE)
     cars = models.ManyToManyField(Car)
-
