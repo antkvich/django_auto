@@ -26,7 +26,7 @@ class Car(BaseModel):
     production_year = models.IntegerField(max_length=4)
 
 
-class CarShowroom(BaseModel):
+class CarInShowroom(BaseModel):
     car = models.ForeignKey(Car, on_delete=models.PROTECT)
     showroom = models.ForeignKey(Showroom, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
