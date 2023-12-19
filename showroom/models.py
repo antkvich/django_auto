@@ -8,6 +8,9 @@ class BaseModel(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=Now())
 
+    class Meta:
+        abstract = True
+
 
 class Showroom(BaseModel):
     name = models.CharField(max_length=50)
