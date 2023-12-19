@@ -8,13 +8,16 @@ class BaseModel(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=Now())
 
+    class Meta:
+        abstract = True
+
 
 class Showroom(BaseModel):
     name = models.CharField(max_length=50)
     country = CountryField()
     balance = models.DecimalField(max_digits=15, decimal_places=2)
-    max_car_year = models.IntegerField(max_length=4, null=True)
-    min_car_year = models.IntegerField(max_length=4, null=True)
+    max_car_year = models.IntegerField(null=True)
+    min_car_year = models.IntegerField(null=True)
     allowed_brands = ArrayField(models.CharField(max_length=30), null=True)
     allowed_countries = ArrayField(CountryField(), null=True)
 
@@ -23,7 +26,7 @@ class Car(BaseModel):
     production_brand = models.CharField(max_length=20)
     name = models.CharField()
     production_country = CountryField()
-    production_year = models.IntegerField(max_length=4)
+    production_year = models.IntegerField()
 
 
 class CarInShowroom(BaseModel):
