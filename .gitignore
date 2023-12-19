@@ -3,3 +3,5 @@
 /.env
 
 /autoRoom/__pycache__/
+/customer/__pycache__/
+/showroom/__pycache__/
