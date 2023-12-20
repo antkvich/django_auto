@@ -33,8 +33,6 @@ class CarInShowroom(BaseModel):
     car = models.ForeignKey(Car, on_delete=models.PROTECT)
     showroom = models.ForeignKey(Showroom, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    color = models.CharField(max_length=20)
-    mileage = models.DecimalField(max_digits=8, decimal_places=1)
 
 
 class Discount(BaseModel):
