@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from showroom.models import Showroom
+from showroom.models import Car, Discount, Showroom
 
 
 class ShowroomSerializer(serializers.ModelSerializer):
@@ -16,3 +16,9 @@ class ShowroomSerializer(serializers.ModelSerializer):
             "allowed_brands",
             "allowed_countries",
         ]
+
+
+class DiscountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Discount
+        fields = "__all__"
