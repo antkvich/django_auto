@@ -22,3 +22,9 @@ class DiscountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Discount
         fields = "__all__"
+
+
+class CarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Car
+        fields = ["id", "name", "production_brand", "production_country", "production_year"]

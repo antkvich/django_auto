@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics
 
 from showroom import serializers
-from showroom.models import Discount, Showroom
+from showroom.models import Car, Discount, Showroom
 
 
 class ShowroomList(generics.ListCreateAPIView):
@@ -23,3 +23,13 @@ class DiscountList(generics.ListCreateAPIView):
 class DiscountDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Discount.objects.all()
     serializer_class = serializers.DiscountSerializer
+
+
+class CarList(generics.ListCreateAPIView):
+    queryset = Car.objects.all()
+    serializer_class = serializers.CarSerializer
+
+
+class CarDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Car.objects.all()
+    serializer_class = serializers.CarSerializer
