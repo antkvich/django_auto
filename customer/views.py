@@ -5,11 +5,11 @@ from customer import serializers
 from customer.models import PurchaseOffer
 
 
-class PurchaseOfferList(generics.ListCreateAPIView):
+class PurchaseOfferListView(generics.ListCreateAPIView):
     queryset = PurchaseOffer.objects.all()
     serializer_class = serializers.PurchaseOfferSerializer
 
 
-class PurchaseOfferDetail(generics.RetrieveUpdateDestroyAPIView):
+class PurchaseOfferDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = PurchaseOffer.objects.all()
     serializer_class = serializers.PurchaseOfferSerializer

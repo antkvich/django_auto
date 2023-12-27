@@ -5,8 +5,8 @@ from . import views
 
 
 urlpatterns = [
-    path("offers/", views.PurchaseOfferList.as_view()),
-    path("offers/<int:pk>", views.PurchaseOfferDetail.as_view()),
+    path("offers/", views.PurchaseOfferListView.as_view()),
+    path("offers/<int:pk>", views.PurchaseOfferDetailView.as_view()),
 ]
 
 formatted_urlpatterns = format_suffix_patterns(urlpatterns)
