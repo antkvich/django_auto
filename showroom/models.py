@@ -15,18 +15,14 @@ class BaseModel(models.Model):
 
 class Showroom(BaseModel):
     name = models.CharField(max_length=50)
-    country = CountryField()
+    country = models.CharField(max_length=200, null=True, choices=CountryField().choices)
     balance = models.DecimalField(max_digits=15, decimal_places=2)
-    max_car_year = models.IntegerField(null=True)
-    min_car_year = models.IntegerField(null=True)
-    allowed_brands = ArrayField(models.CharField(max_length=30), null=True)
-    allowed_countries = ArrayField(CountryField(), null=True)
 
 
 class Car(BaseModel):
     production_brand = models.CharField(max_length=20)
     name = models.CharField()
-    production_country = CountryField()
+    production_country = models.CharField(max_length=200, null=True, choices=CountryField().choices)
     production_year = models.IntegerField()
 
 
@@ -34,6 +30,7 @@ class CarInShowroom(BaseModel):
     car = models.ForeignKey(Car, on_delete=models.PROTECT)
     showroom = models.ForeignKey(Showroom, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.IntegerField(default=0)
 
 
 class Discount(BaseModel):

@@ -15,7 +15,6 @@ class PurchaseOffer(BaseModel):
     client = models.ForeignKey(Customer, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     max_price = models.DecimalField(max_digits=15, decimal_places=2)
-    color = models.CharField(max_length=20, blank=True)
 
 
 class Purchase(BaseModel):
