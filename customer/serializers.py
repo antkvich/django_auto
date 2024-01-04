@@ -1,10 +1,21 @@
 from rest_framework import serializers
 
-from customer.models import PurchaseOffer
+from customer.models import Customer, PurchaseOffer
 
 
 class PurchaseOfferSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = PurchaseOffer
-        fields = ["client", "car", "max_price", "id", "created_at", "updated_at"]
+        fields = ["user", "car", "max_price", "id", "created_at", "updated_at"]
         read_only_fields = ["id", "created_at", "updated_at"]
+
+
+class CustomerSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Customer
+        fields = ["id", "created_at", "updated_at", "balance", "user"]
+        read_only_fields = ["id", "created_at", "updated_at", "user"]
