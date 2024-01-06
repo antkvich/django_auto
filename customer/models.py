@@ -6,7 +6,7 @@ from showroom.models import BaseModel, Car, Showroom
 
 class Customer(BaseModel):
     balance = models.DecimalField(max_digits=15, decimal_places=2)
-    user = models.ForeignKey(User, verbose_name="User", on_delete=models.CASCADE)
+    user = models.OneToOneField(User, verbose_name="User", on_delete=models.CASCADE, primary_key=True)
 
 
 class PurchaseOffer(BaseModel):
