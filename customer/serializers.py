@@ -17,5 +17,5 @@ class CustomerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Customer
-        fields = ["id", "created_at", "updated_at", "balance", "user"]
-        read_only_fields = ["id", "created_at", "updated_at", "user"]
+        fields = ["user_id", "created_at", "updated_at", "balance"]
+        read_only_fields = ["user_id", "created_at", "updated_at", "balance"]
