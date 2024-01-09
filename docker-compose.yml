@@ -23,10 +23,35 @@ services:
     ports:
       - 5432:5432
 
-    environment:
-      POSTGRES_DB: "autodb"
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
+    env_file:
+      - .env
+
+  redis:
+    image: redis:7.2.3
+
+    ports:
+      - 6379:6379
+
+
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: celery -A autoRoom worker --loglevel=info
+    depends_on:
+      - redis
+    links:
+      - redis
+
+  celery-beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: celery -A autoRoom beat --loglevel=info
+    depends_on:
+      - redis
+    links:
+      - redis
 
 volumes:
   postgres_data:
