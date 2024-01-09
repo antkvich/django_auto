@@ -22,7 +22,7 @@ class CustomerListView(generics.ListCreateAPIView):
     serializer_class = serializers.CustomerSerializer
 
 
-class CustomerOfferDetail(generics.ListCreateAPIView):
+class CustomerOfferDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Customer.objects.all()
     serializer_class = serializers.CustomerSerializer
